@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Precision Control with Dr. Lin | Deep Tech Magazine</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header class="top-bar">
+    <div class="nav-content container">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark" aria-hidden="true"></span>
+        Deep Tech
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a class="active" href="../interviews/index.html">Interviews</a></li>
+          <li><a href="../tech-of-the-month/index.html">Technology of the Month</a></li>
+          <li><a href="#">Insights</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <article class="article container">
+      <a class="back-link" href="../interviews/index.html">← Back to Interviews</a>
+      <h1>Precision Control with Dr. Lin</h1>
+      <div class="article-meta">
+        <span>By A. Rios</span>
+        <span>•</span>
+        <span>December 2024</span>
+      </div>
+
+      <!-- Swap this image for your article hero -->
+      <img src="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?auto=format&fit=crop&w=1400&q=80" alt="Quantum lab controls panel">
+
+      <p>Programmable qubits are leaving the page of research papers and entering manufacturable systems. We sat down with Dr. Lin to unpack how control stacks and cryogenic hardware are maturing in parallel.</p>
+
+      <p>The conversation spans firmware, calibration, and the path to fault tolerance. Key engineering decisions now hinge on how quickly the control plane can adapt to new error models while keeping coherence budgets intact.</p>
+
+      <div class="article-quote">
+        “Speed matters, but repeatability matters more. Every control instruction should carry a proof of stability.”
+      </div>
+
+      <h3>Signal Integrity at Scale</h3>
+      <p>Scaling from 100 to 1,000 qubits changes how we think about signal hygiene. Crosstalk moves from a theoretical concern to a daily debugging ritual, and the firmware stack has to expose the right observability hooks.</p>
+
+      <h3>Firmware That Learns</h3>
+      <p>Lin’s team is experimenting with adaptive firmware layers. The control software can retune drive pulses in response to drift, while guardrails enforce safe bounds for amplitude and frequency sweeps.</p>
+
+      <!-- Insert inline media, charts, or code snippets here -->
+      <p>Next steps involve tighter co-design between superconducting materials, control logic, and layout. The result is a tighter feedback loop between fabrication, calibration, and runtime corrections.</p>
+
+      <div class="divider"></div>
+      <a class="back-link" href="../interviews/index.html">← Back to Interviews</a>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      © 2024 Deep Tech Magazine. Interviews, features, and deep dives.
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
