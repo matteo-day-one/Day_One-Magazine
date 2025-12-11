@@ -1,10 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Playfair+Display:wght@500;600;700&family=Sora:wght@300;400;500;600;700&display=swap');
 
 :root {
   --teal: #00b2e8;
   --deep-teal: #028598;
   --yellow: #d3d700;
   --orange: #ec4505;
+  --text-dark: #514f6a;
+  --text-light: #c8c7d6;
   --ink: #0f1a1f;
   --muted: #4f6270;
   --canvas: #f6fbfd;
@@ -16,6 +18,18 @@
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 body {
@@ -67,7 +81,7 @@ img {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--deep-teal);
+  color: var(--text-light);
   font-size: 14px;
 }
 
@@ -77,6 +91,49 @@ img {
   border-radius: 50%;
   background: linear-gradient(135deg, var(--teal), var(--yellow));
   box-shadow: 0 0 0 6px rgba(0, 178, 232, 0.12);
+  animation: brand-pulse 2.8s ease-in-out infinite;
+}
+
+.brand-text {
+  display: inline-flex;
+  gap: 1px;
+}
+
+.brand-text .letter {
+  display: inline-block;
+  color: var(--text-light);
+}
+
+/* One-time bounce on load layered with the pulse */
+.brand-mark.brand-bounce {
+  animation: brand-bounce 700ms ease-out, brand-pulse 2.8s ease-in-out infinite 700ms;
+}
+
+@keyframes brand-pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.14);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes brand-bounce {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  35% {
+    transform: translateY(-6px) scale(1.1);
+  }
+  70% {
+    transform: translateY(2px) scale(0.98);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
 }
 
 .nav-links {
@@ -93,7 +150,8 @@ img {
   padding: 10px 0;
   font-weight: 600;
   letter-spacing: 0.01em;
-  color: #1a2d36;
+  --underline-color: var(--deep-teal);
+  color: var(--text-dark);
   transition: color 200ms ease;
 }
 
@@ -104,15 +162,35 @@ img {
   bottom: -8px;
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg, var(--teal), var(--yellow), var(--orange));
+  background: var(--underline-color);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 220ms ease;
 }
 
+.nav-links a.nav-home {
+  --underline-color: var(--teal);
+}
+
+.nav-links a.nav-tech {
+  --underline-color: var(--yellow);
+}
+
+.nav-links a.nav-insights {
+  --underline-color: var(--orange);
+}
+
+.nav-links a.nav-interviews {
+  --underline-color: var(--deep-teal);
+}
+
 .nav-links a:hover,
 .nav-links a:focus-visible {
-  color: var(--deep-teal);
+  color: var(--underline-color);
+}
+
+.nav-links a.active {
+  color: var(--underline-color);
 }
 
 .nav-links a:hover::after,
@@ -185,13 +263,13 @@ img {
 .hero::before {
   content: '';
   position: absolute;
-  inset: 12% 8% auto 8%;
-  height: 320px;
-  background: radial-gradient(circle at 20% 20%, rgba(0, 178, 232, 0.12), transparent 38%),
-    radial-gradient(circle at 80% 40%, rgba(211, 215, 0, 0.12), transparent 42%),
-    radial-gradient(circle at 50% 60%, rgba(236, 69, 5, 0.08), transparent 46%);
+  inset: 0;
+  background: radial-gradient(circle at 20% 20%, rgba(0, 178, 232, 0.14), transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(211, 215, 0, 0.14), transparent 44%),
+    radial-gradient(circle at 50% 70%, rgba(236, 69, 5, 0.1), transparent 50%);
   filter: blur(8px);
   z-index: 0;
+  pointer-events: none;
 }
 
 .hero-inner {
@@ -209,15 +287,30 @@ img {
   margin: 0 auto;
 }
 
-.hero img.hero-subtitle {
-  width: min(360px, 70vw);
+.hero .hero-subtitle {
+  width: min(640px, 86vw);
   margin: 8px auto 0;
+  font-family: 'Fredoka', 'Sora', 'Helvetica Neue', Arial, sans-serif;
+  font-size: clamp(26px, 4vw, 42px);
+  font-weight: 600;
+  letter-spacing: 0.005em;
+  color: var(--text-dark);
+  text-align: center;
+  line-height: 1.3;
+}
+
+.hero .hero-subtitle .accent-orange {
+  color: var(--orange);
+}
+
+.hero .hero-subtitle .accent-muted {
+  color: var(--text-dark);
 }
 
 .separator {
   width: 220px;
   height: 2px;
-  background: linear-gradient(90deg, var(--teal), var(--yellow), var(--orange));
+  background: linear-gradient(90deg, var(--teal), var(--deep-teal), var(--yellow), var(--orange));
   margin: 28px auto 0;
 }
 
@@ -474,6 +567,28 @@ img {
   color: var(--muted);
   text-align: center;
   font-size: 14px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.sponsor {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  color: var(--deep-teal);
+}
+
+.sponsor img {
+  height: 26px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.12));
 }
 
 @media (max-width: 1024px) {
