@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const navLinks = document.querySelector('.nav-links');
   const brandMark = document.querySelector('.brand-mark');
   const brandLetters = Array.from(document.querySelectorAll('.brand-text .letter'));
+  let brandActiveColor = null;
 
   if (!navToggle || !navLinks) return;
 
@@ -30,12 +31,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // Sync brand dot to the active page color.
   const activeLink = navLinks.querySelector('.active');
   if (brandMark && activeLink) {
-    const activeColor =
+    const activeColorRaw =
       getComputedStyle(activeLink).getPropertyValue('--underline-color') ||
       getComputedStyle(activeLink).color;
-    if (activeColor) {
-      brandMark.style.background = activeColor.trim();
-      brandMark.style.boxShadow = `0 0 0 6px ${activeColor.trim()}22`;
+    if (activeColorRaw) {
+      brandActiveColor = activeColorRaw.trim();
+      brandMark.style.background = brandActiveColor;
+      brandMark.style.boxShadow = `0 0 0 6px ${brandActiveColor}22`;
     }
   }
 
@@ -50,23 +52,20 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Animate brand letters like a passing train of palette colors.
-  const palette = ['var(--teal)', 'var(--deep-teal)', 'var(--yellow)', 'var(--orange)'];
-  const resetColor = 'var(--text-light)';
+  const rootStyles = getComputedStyle(document.documentElement);
+  const baseColor = rootStyles.getPropertyValue('--text-light').trim() || 'var(--text-light)';
+  const activeColor = brandActiveColor || baseColor;
+
   if (brandLetters.length) {
-    const totalSteps = brandLetters.length + palette.length;
+    const totalSteps = brandLetters.length;
     let step = 0;
     const tick = () => {
       brandLetters.forEach((letter, idx) => {
-        const paletteIndex = step - idx;
-        if (paletteIndex >= 0 && paletteIndex < palette.length) {
-          letter.style.color = palette[paletteIndex];
-        } else {
-          letter.style.color = resetColor;
-        }
+        letter.style.color = idx === step ? activeColor : baseColor;
       });
       step += 1;
       if (step > totalSteps) {
-        brandLetters.forEach((letter) => (letter.style.color = resetColor));
+        brandLetters.forEach((letter) => (letter.style.color = baseColor));
       } else {
         setTimeout(tick, 110);
       }
