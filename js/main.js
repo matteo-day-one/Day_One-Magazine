@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const brandMark = document.querySelector('.brand-mark');
   const brandLetters = Array.from(document.querySelectorAll('.brand-text .letter'));
   let brandActiveColor = null;
+  let trainStarted = false;
 
   if (!navToggle || !navLinks) return;
 
@@ -47,6 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
     brandMark.addEventListener('animationend', (event) => {
       if (event.animationName === 'brand-bounce') {
         brandMark.classList.remove('brand-bounce');
+        startTrain();
       }
     });
   }
@@ -56,7 +58,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const baseColor = rootStyles.getPropertyValue('--text-light').trim() || 'var(--text-light)';
   const activeColor = brandActiveColor || baseColor;
 
-  if (brandLetters.length) {
+  const startTrain = () => {
+    if (trainStarted) return;
+    trainStarted = true;
+    if (!brandLetters.length) return;
     const totalSteps = brandLetters.length;
     let step = 0;
     const tick = () => {
@@ -70,6 +75,16 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(tick, 110);
       }
     };
-    setTimeout(tick, 150);
+    setTimeout(tick, 120);
+  };
+
+  // Fallback: if no bounce runs, start the train shortly after load.
+  if (!brandMark) {
+    startTrain();
+  }
+
+  // Delay-start the train midway through the bounce for quicker sync.
+  if (brandMark) {
+    setTimeout(startTrain, 350);
   }
 });
