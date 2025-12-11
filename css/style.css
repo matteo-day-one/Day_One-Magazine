@@ -181,7 +181,7 @@ img {
 }
 
 .nav-links a.nav-tech {
-  --underline-color: var(--yellow);
+  --underline-color: var(--deep-teal);
 }
 
 .nav-links a.nav-insights {
@@ -189,7 +189,7 @@ img {
 }
 
 .nav-links a.nav-interviews {
-  --underline-color: var(--deep-teal);
+  --underline-color: var(--yellow);
 }
 
 .nav-links a:hover,
