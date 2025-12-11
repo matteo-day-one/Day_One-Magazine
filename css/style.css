@@ -192,6 +192,10 @@ img {
   --underline-color: var(--yellow);
 }
 
+.nav-links a.nav-register {
+  --underline-color: var(--muted);
+}
+
 .nav-links a:hover,
 .nav-links a:focus-visible {
   color: var(--underline-color);
@@ -581,6 +585,85 @@ img {
   color: var(--muted);
   font-size: 15px;
   text-align: justify;
+}
+
+.form-card {
+  max-width: 520px;
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.06);
+  padding: 24px;
+  display: grid;
+  gap: 14px;
+}
+
+.form-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.form-grid label {
+  font-weight: 600;
+  color: var(--ink);
+  font-size: 15px;
+}
+
+.form-grid input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: inherit;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.form-grid input:focus {
+  border-color: var(--deep-teal);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(2, 133, 152, 0.12);
+}
+
+.button-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, var(--teal), var(--deep-teal));
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: transform 140ms ease, box-shadow 140ms ease;
+}
+
+.button-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(2, 133, 152, 0.18);
+}
+
+.form-note {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 0;
+}
+
+.form-status {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.form-status.success {
+  color: var(--deep-teal);
+}
+
+.form-status.error {
+  color: var(--orange);
 }
 
 .article-quote {

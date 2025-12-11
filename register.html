@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register | Depth Magazine</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="top-bar">
+    <div class="nav-content container">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-text" aria-hidden="true">
+          <span class="letter" style="--i:0;--brand-color:var(--deep-teal)">D</span>
+          <span class="letter" style="--i:1;--brand-color:var(--yellow)">E</span>
+          <span class="letter" style="--i:2;--brand-color:var(--orange)">P</span>
+          <span class="letter" style="--i:3;--brand-color:var(--deep-teal)">T</span>
+          <span class="letter" style="--i:4;--brand-color:var(--yellow)">H</span>
+        </span>
+        <span class="sr-only">DEPTH</span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a class="nav-home" href="index.html">Home</a></li>
+          <li><a class="nav-tech" href="tech-of-the-month/index.html">Technology of the Month</a></li>
+          <li><a class="nav-interviews" href="interviews/index.html">Interviews</a></li>
+          <li><a class="nav-insights" href="insights/index.html">Insights</a></li>
+          <li><a class="active nav-register" href="register.html">Register</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <header class="page-header container">
+      <h1 class="page-title">Register</h1>
+      <p class="page-subtitle">Join the Depth newsletter and early-access list.</p>
+    </header>
+
+    <section class="container">
+      <div class="form-card">
+        <form id="register-form" class="form-grid" novalidate>
+          <div>
+            <label for="firstName">Name</label>
+            <input id="firstName" name="firstName" type="text" autocomplete="given-name" required>
+          </div>
+          <div>
+            <label for="lastName">Surname</label>
+            <input id="lastName" name="lastName" type="text" autocomplete="family-name" required>
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <button type="submit" class="button-primary">Register</button>
+          <p class="form-note">Your details are stored securely on the server and are not publicly visible.</p>
+          <div id="register-status" class="form-status" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div>© 2026 Depth Magazine. Made from curiosity crafted for clarity.</div>
+        <div class="sponsor">
+          <span>Sponsored by</span>
+          <a href="https://day-one.biz/" target="_blank" rel="noopener">
+            <img src="assets/day_one_logo.png" alt="Day One">
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.42.0/dist/umd/supabase.min.js"></script>
+  <script>
+    // TODO: set your Supabase project URL and anon key here (RLS-protected).
+    window.SUPABASE_URL = 'https://ewxthmxwdasqnyaeafrd.supabase.co';
+    window.SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV3eHRobXh3ZGFzcW55YWVhZnJkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU0NjY1MTYsImV4cCI6MjA4MTA0MjUxNn0.DRYii1Tl7oX_-pO9VfpHvafwFOrllEtvd3L7ZRRpGoM';
+  </script>
+  <script src="js/main.js"></script>
+  <script src="js/register.js"></script>
+</body>
+</html>
